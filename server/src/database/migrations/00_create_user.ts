@@ -1,8 +1,9 @@
 import knex from 'knex'
 
-export const up = async (knex: knex) => {
+export async function up(knex: knex) {
   return knex.schema.createTable('users', table => {
     table.increments('id').primary()
+    
     table.string('name').notNullable()
     table.string('avatar').notNullable()
     table.string('whatsapp').notNullable()
@@ -10,6 +11,6 @@ export const up = async (knex: knex) => {
   })
 }
 
-export const down = async (knex: knex) => {
+export async function down(knex: knex) {
   return knex.schema.dropTable('users')
 }
